@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "203007874320",
+    "project_id": "fitnesspro-e828c",
+    "storage_bucket": "fitnesspro-e828c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:203007874320:android:20cac8c91f1b6fdc9bc195",
+        "android_client_info": {
+          "package_name": "com.fitness.fitnesspro"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "203007874320-kmjmh96bhoqm5h53t6h0u3v2v4c54f37.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgKUo_HdwTkKdo-_vjEfS7or2pNsK7k_c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "203007874320-kmjmh96bhoqm5h53t6h0u3v2v4c54f37.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
