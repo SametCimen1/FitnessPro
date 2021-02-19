@@ -182,36 +182,7 @@ public class SignUpActivity extends AppCompatActivity {
         finish();
     }
 
-//    private void loadUserProfile(AccessToken newAccessToken){
-//        GraphRequest request =    GraphRequest.newMeRequest(newAccessToken, new GraphRequest.GraphJSONObjectCallback() {
-//            @Override
-//            public void onCompleted(JSONObject object, GraphResponse response) {
-////
-//                    Toast.makeText(SignUpActivity.this, "in loadUserProfile", Toast.LENGTH_LONG).show();
-//                    String emailText = object.getString("email");
-//                    faceBookEmail = emailText;
-//                    String name = object.getString("first_name");
-//                    DocumentReference documentReference = fStore.collection("users").document(faceBookEmail);
-//                    Map<String, Object> user = new HashMap<>();
-//                    user.put("name", name);
-//                    user.put("email", emailText);
-//                    documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
-//                        @Override
-//                        public void onSuccess(Void aVoid) {
-//                            Toast.makeText(SignUpActivity.this,"User is created", Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
 
-//
-//            }
-//        });
-//        Bundle parameters = new Bundle();
-//        parameters.putString("fields", "email,first_name, id");
-//        request.setParameters(parameters);
-//        request.executeAsync();
-//
-//
-//    }
 
     AccessTokenTracker tokenTracker = new AccessTokenTracker() {
         @Override
