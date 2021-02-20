@@ -57,8 +57,13 @@
         <activity
             android:name=".loginActivity"
             android:screenOrientation="portrait" />
-
-
+        <activity
+            android:name="Activity4"
+            />
+        <activity android:name=".LB" />
+        <activity android:name=".Activity3" />
+        <activity android:name=".Activity2" />
+        <activity android:name=".MainActivity"/>
     </application>
 
 

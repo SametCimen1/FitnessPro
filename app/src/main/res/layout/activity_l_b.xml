@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/dassd"
+    android:padding="16dp"
+    tools:context=".Activity3">
+
+    <com.varunest.sparkbutton.SparkButton
+        android:id="@+id/spark_button12323"
+        android:layout_width="337dp"
+        android:layout_height="94dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.432"
+        app:sparkbutton_activeImage="@drawable/asdq1"
+        app:sparkbutton_iconSize="430dp"
+        app:sparkbutton_inActiveImage="@drawable/awds"
+        app:sparkbutton_primaryColor="@color/blue"
+        app:sparkbutton_secondaryColor="@color/red">
+
+    </com.varunest.sparkbutton.SparkButton>
+
+    <com.varunest.sparkbutton.SparkButton
+        android:id="@+id/spark_button1232"
+        android:layout_width="355dp"
+        android:layout_height="179dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.606"
+        app:sparkbutton_activeImage="@drawable/dsa12"
+        app:sparkbutton_iconSize="355dp"
+        app:sparkbutton_inActiveImage="@drawable/joe1231234"
+        app:sparkbutton_primaryColor="@color/blue"
+        app:sparkbutton_secondaryColor="@color/red">
+
+    </com.varunest.sparkbutton.SparkButton>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="386dp"
+        android:layout_height="134dp"
+        android:layout_marginStart="12dp"
+        android:fontFamily="@font/yeseva_one"
+        android:text="Please select your preffered method below"
+        android:textColor="#FFFFFF"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.051" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="222dp"
+        android:layout_height="299dp"
+        android:layout_marginTop="436dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/a12" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/yeseva_one"
+        android:text="Step 3/4"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.239" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+

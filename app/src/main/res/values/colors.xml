@@ -11,6 +11,9 @@
     <color name ="colorStripeStart">#9900FF85</color>
     <color name ="colorStripeMiddle">#9900A2FF</color>
     <color name ="colorStripeEnd">#4D20282D</color>
-
-
+    <color name="pink"> #ff00a2</color>
+    <color name="yellow"> #ffee00 </color>
+    <color name="blue"> #2200ff </color>
+    <color name="red"> #ff1100 </color>
+    <color name="lightred"> #f7163d </color>
 </resources>

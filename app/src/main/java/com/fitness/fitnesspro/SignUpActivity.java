@@ -62,7 +62,7 @@ public class SignUpActivity extends AppCompatActivity {
     private  boolean isUserSignedInWithEmail = false;
     private  CallbackManager callbackManager;
     private TextView alreadyHaveAccount;
-    public static final String EXTRA_EMAIL = "com.example.registersignup.EXTRA_EMAIL";
+    public static final String EXTRA_EMAIL = "com.fitness.fitnesspro.EXTRA_EMAIL";
     private  boolean isLoggedInWithFacebook;
     private  FirebaseAuth mFirebaseAuth;
     private LoginManager loginManager;
@@ -178,6 +178,8 @@ public class SignUpActivity extends AppCompatActivity {
         request.setParameters(parameters);
         request.executeAsync();
         Intent intent = new Intent(SignUpActivity.this, AfterLogin.class);
+        intent.putExtra(EXTRA_EMAIL, facebookEmail);
+
         startActivity(intent);
         finish();
     }
@@ -295,7 +297,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                                 Intent intent = new Intent(SignUpActivity.this, loginActivity.class);
-                                intent.putExtra(EXTRA_EMAIL, email);
+
                                 startActivity(intent);
                                 finish();
 
@@ -344,10 +346,8 @@ public class SignUpActivity extends AppCompatActivity {
         if (fireBAseUser != null) {
 
             // if user is logged in
-            String currentUserEmail = fireBAseUser.getEmail();
             Intent intent = new Intent(SignUpActivity.this,AfterLogin.class);
-            intent.putExtra(EXTRA_EMAIL, currentUserEmail);
-
+            Toast.makeText(SignUpActivity.this, " user is not null", Toast.LENGTH_SHORT).show();
             startActivity(intent);
             finish();
         }
