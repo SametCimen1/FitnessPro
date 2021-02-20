@@ -75,7 +75,7 @@ gender = getIntent().getStringExtra("genderKey");
 
     public void openLB ( ) {
         if(day==0||month==0||year==0){
-            Toast.makeText(Activity2.this, "Please choose a date if you choose please dont forget to click 'select date'", Toast.LENGTH_LONG).show();
+            Toast.makeText(Activity2.this, "Please choose a date if you choose please don't forget to click 'select date'", Toast.LENGTH_LONG).show();
             return;
         }
 

@@ -70,8 +70,8 @@ nextButton = findViewById(R.id.imageButton3143);
 
         if(email == null)
             Toast.makeText(Activity4.this, "email is null", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(Activity4.this, email, Toast.LENGTH_SHORT).show();
+
+
 
 
 

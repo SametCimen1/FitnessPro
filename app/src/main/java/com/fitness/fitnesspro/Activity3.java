@@ -74,8 +74,8 @@ public class Activity3 extends AppCompatActivity {
 
         if (email == null)
             Toast.makeText(Activity3.this, "email is null", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(Activity3.this, email, Toast.LENGTH_SHORT).show();
+
+
 
 
         Seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

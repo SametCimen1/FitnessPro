@@ -103,8 +103,7 @@ if(user!=null){
 }
 if(email == null)
      Toast.makeText(AfterLogin.this, "email is null", Toast.LENGTH_SHORT).show();
-else
-    Toast.makeText(AfterLogin.this, email, Toast.LENGTH_SHORT).show();
+
 
 
 
