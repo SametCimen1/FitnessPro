@@ -3,9 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-
-    >
+    android:layout_height="match_parent">
 
 
     <ImageView
@@ -103,7 +101,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:contextClickable="true"
         app:layout_constraintTop_toBottomOf="@+id/loginPassword"
-        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintVertical_bias="0.12"
         app:layout_constraintWidth_percent="0.4" />
 
 
@@ -128,11 +126,11 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/googleButton"
-        android:layout_width="199dp"
-        android:layout_height="38dp"
+        android:layout_width="200dp"
+        android:layout_height="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/forgetPassword"
         app:layout_constraintVertical_bias="0.75"
@@ -141,22 +139,21 @@
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_facebook"
 
-        android:layout_width="193dp"
-        android:layout_height="35dp"
+        android:layout_width="198dp"
+        android:layout_height="26dp"
         android:layout_gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.07"
 
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.272"
         app:layout_constraintStart_toEndOf="@+id/googleButton"
 
         app:layout_constraintTop_toBottomOf="@+id/forgetPassword"
-        app:layout_constraintVertical_bias="0.75"
+        app:layout_constraintVertical_bias="0.742"
 
         app:layout_constraintWidth_percent="0.4" />
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

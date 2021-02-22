@@ -129,12 +129,14 @@ nextButton.setOnClickListener(new View.OnClickListener() {
 
 
       DocumentReference newDocumentReference = fStore.collection("users").document(email);
+
+
         Map<String, Object> profile = new HashMap<>();
         profile.put("gender", gender);
         profile.put("birthday", date);
         profile.put("preferred data Type", "Kg/Cm");
-        profile.put("kg", kg);
-        profile.put("cm", cm);
+        profile.put("kg",  Integer.toString(kg));
+        profile.put("cm",   Integer.toString(cm));
         newDocumentReference.update(profile).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

@@ -152,9 +152,9 @@ InsertData();
         profile.put("gender", gender);
         profile.put("birthday", date);
         profile.put("preferred data Type", "lb/inch");
-        profile.put("lb", lb);
-        profile.put("feet", feet);
-        profile.put("inch", inch);
+        profile.put("lb", Integer.toString(lb));
+        profile.put("feet",Integer.toString(feet));
+        profile.put("inch",  Integer.toString(inch));
         newDocumentReference.update(profile).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

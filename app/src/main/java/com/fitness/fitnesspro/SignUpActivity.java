@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -78,6 +79,7 @@ public class SignUpActivity extends AppCompatActivity {
         signInSilently();
         finalSignUp = findViewById(R.id.SignupButton);
         myName = findViewById(R.id.name);
+        getWindow ( ).setFlags ( WindowManager.LayoutParams.FLAG_FULLSCREEN , (WindowManager.LayoutParams.FLAG_FULLSCREEN) );
 
         alreadyHaveAccount = findViewById(R.id.haveAccount);
         myEmail = findViewById(R.id.signUpEmail);
@@ -165,12 +167,13 @@ public class SignUpActivity extends AppCompatActivity {
                 Map<String, Object> user = new HashMap<>();
                 user.put("name", facebookName);
                 user.put("email", facebookEmail);
-                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                documentReference.update(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Toast.makeText(SignUpActivity.this,"User is created", Toast.LENGTH_SHORT).show();
                     }
                 });
+
             }
         });
         Bundle parameters = new Bundle();
@@ -283,7 +286,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 Map<String, Object> user = new HashMap<>();
                                 user.put("name", name);
                                 user.put("email", email);
-                                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                documentReference.update(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
 
@@ -347,7 +350,6 @@ public class SignUpActivity extends AppCompatActivity {
 
             // if user is logged in
             Intent intent = new Intent(SignUpActivity.this,AfterLogin.class);
-            Toast.makeText(SignUpActivity.this, " user is not null", Toast.LENGTH_SHORT).show();
             startActivity(intent);
             finish();
         }

@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/dassd"
-    android:padding="16dp"
-    tools:context=".Activity3">
+    android:padding="16dp">
 
     <com.varunest.sparkbutton.SparkButton
         android:id="@+id/spark_button12323"
@@ -14,9 +13,10 @@
         android:layout_height="94dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.526"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.372"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.2"
         app:sparkbutton_activeImage="@drawable/asdq1"
         app:sparkbutton_iconSize="430dp"
         app:sparkbutton_inActiveImage="@drawable/awds"
@@ -31,10 +31,10 @@
         android:layout_height="179dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintHorizontal_bias="0.636"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.606"
+        app:layout_constraintVertical_bias="0.754"
         app:sparkbutton_activeImage="@drawable/dsa12"
         app:sparkbutton_iconSize="355dp"
         app:sparkbutton_inActiveImage="@drawable/joe1231234"
@@ -45,8 +45,8 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="386dp"
-        android:layout_height="134dp"
+        android:layout_width="380dp"
+        android:layout_height="180dp"
         android:layout_marginStart="12dp"
         android:fontFamily="@font/yeseva_one"
         android:text="Please select your preffered method below"
@@ -57,31 +57,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.051" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="222dp"
-        android:layout_height="299dp"
-        android:layout_marginTop="436dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/a12" />
-
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/yeseva_one"
         android:text="Step 3/4"
-        android:textColor="#FFFFFF"
+        android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239" />
+        app:layout_constraintVertical_bias="0.947" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

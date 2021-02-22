@@ -1,12 +1,12 @@
 package com.fitness.fitnesspro;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Bundle;
+
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -29,9 +29,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
+import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
 
-public class googleSignIn extends AppCompatActivity {
+public class googleContinue extends AppCompatActivity {
+
     GoogleSignInClient mGoogleSignInClient;
     private Button signOut;
     private FirebaseAuth mAuth;
@@ -43,9 +46,10 @@ public class googleSignIn extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_google_sign_in);
+        setContentView(R.layout.activity_google_continue);
+        getWindow ( ).setFlags ( WindowManager.LayoutParams.FLAG_FULLSCREEN , (WindowManager.LayoutParams.FLAG_FULLSCREEN) );
+
         mAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
         signOut = findViewById(R.id.signOutButton);
@@ -112,12 +116,11 @@ public class googleSignIn extends AppCompatActivity {
 
                             FirebaseUser user = mAuth.getCurrentUser();
                             updateUI(user);
-                            putData();
-
+                           
                         } else {
                             // If sign in fails, display a message to the user.
 
-                            Toast.makeText(googleSignIn.this, "sign in failed", Toast.LENGTH_LONG).show();
+                            Toast.makeText(googleContinue.this, "sign in failed", Toast.LENGTH_LONG).show();
                             updateUI(null);
 
                         }
@@ -126,7 +129,7 @@ public class googleSignIn extends AppCompatActivity {
                     }
 
                     private void updateUI(FirebaseUser user) {
-                        Intent intent = new Intent(googleSignIn.this, AfterLogin.class);
+                        Intent intent = new Intent(googleContinue.this, AfterLogin.class);
                         startActivity(intent);
                         // get details of user who just signed in
 
@@ -157,26 +160,5 @@ public class googleSignIn extends AppCompatActivity {
         return userName;
     }
 
-    private void putData() {
 
-
-                DocumentReference makeNewAccount = fStore.collection("users").document(email);
-                Map<String, Object> make = new HashMap<>();
-                make.put("email", getEmail());
-                make.put("name", getName());
-                makeNewAccount.set(make).addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(googleSignIn.this, "Error" + e.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-
-
-
-    }
 }

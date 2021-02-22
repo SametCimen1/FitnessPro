@@ -4,8 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
 
     <ImageView
@@ -42,7 +41,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2"
+        app:layout_constraintVertical_bias="0.15"
         app:layout_constraintWidth_percent="0.8"
 
         />
@@ -69,6 +68,7 @@
         app:layout_constraintVertical_bias="0.08"
 
         app:layout_constraintWidth_percent="0.8" />
+
     <TextView
         android:id="@+id/haveAccount"
         android:layout_width="0dp"
@@ -80,13 +80,14 @@
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textColorHint="@color/black"
+
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        android:textSize="20dp"
-        app:layout_constraintVertical_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignupButton"
+        app:layout_constraintVertical_bias="0.1"
 
         app:layout_constraintWidth_percent="1" />
 
@@ -172,8 +173,8 @@
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/googleButton"
-        android:layout_width="199dp"
-        android:layout_height="38dp"
+        android:layout_width="200dp"
+        android:layout_height="44dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -185,8 +186,8 @@
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_facebook"
 
-        android:layout_width="193dp"
-        android:layout_height="35dp"
+        android:layout_width="183dp"
+        android:layout_height="39dp"
         android:layout_gravity="center_horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
 

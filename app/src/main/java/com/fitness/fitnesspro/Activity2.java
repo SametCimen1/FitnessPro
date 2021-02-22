@@ -16,6 +16,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import org.w3c.dom.Text;
 
 import java.text.DateFormat;
@@ -31,8 +34,8 @@ public class Activity2 extends AppCompatActivity {
     private int month = 0;
     private int year = 0;
     private String gender;
-
-
+    private FirebaseUser user;
+    private FirebaseAuth auth;
 private String date = "";
 
     @Override
@@ -40,8 +43,14 @@ private String date = "";
         super.onCreate ( savedInstanceState );
         getWindow ( ).setFlags ( WindowManager.LayoutParams.FLAG_FULLSCREEN , (WindowManager.LayoutParams.FLAG_FULLSCREEN) );
 
-gender = getIntent().getStringExtra("genderKey");
-
+        gender = getIntent().getStringExtra("genderKey");
+        auth  = FirebaseAuth.getInstance();
+        user = auth.getCurrentUser();
+        if(user == null){
+            Intent intent = new Intent(Activity2.this, AfterLogin.class);
+            startActivity(intent);
+            finish();
+        }
         setContentView ( R.layout.activity_2 );
         Button21 = ( Button ) findViewById ( R.id.button21 );
         datePicker= findViewById ( R.id.datePicker );

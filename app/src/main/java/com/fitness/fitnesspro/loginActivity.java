@@ -14,6 +14,7 @@ import android.text.TextUtils;
 
 import android.util.Patterns;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 import android.widget.EditText;
@@ -66,6 +67,7 @@ public class loginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
         firebaseAuth = FirebaseAuth.getInstance();
+        getWindow ( ).setFlags ( WindowManager.LayoutParams.FLAG_FULLSCREEN , (WindowManager.LayoutParams.FLAG_FULLSCREEN) );
 
 
         alreadyHaveAccount = findViewById(R.id.alreadyHaveAccount);
@@ -93,7 +95,7 @@ public class loginActivity extends AppCompatActivity {
         buttonGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(loginActivity.this, googleSignIn.class);
+                Intent intent = new Intent(loginActivity.this, googleContinue.class);
                 startActivity(intent);
             }
         });

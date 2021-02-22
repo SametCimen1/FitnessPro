@@ -15,7 +15,7 @@ import java.util.TimerTask;
 
 public class main extends AppCompatActivity {
     Animation topanim;
-    ImageView image, load;
+    ImageView image;
     TextView logo;
     private Timer timer;
 
@@ -27,12 +27,11 @@ public class main extends AppCompatActivity {
         setContentView(R.layout.activity_main2);
         topanim = AnimationUtils.loadAnimation(main.this, R.anim.top_anim);
         image = findViewById(R.id.gifImageView3);
-        load = findViewById(R.id.gifImageView4);
         logo = findViewById(R.id.textView2);
 
         image.setAnimation(topanim);
 
-        load.setAnimation(topanim);
+
         logo.setAnimation(topanim);
 
         timer = new Timer();
