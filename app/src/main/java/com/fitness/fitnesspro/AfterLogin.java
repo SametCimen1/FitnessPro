@@ -76,8 +76,9 @@ public class AfterLogin extends AppCompatActivity {
 
         reset = findViewById(R.id.resetButton);
        fStore = FirebaseFirestore.getInstance();
-        SharedPreferences dataSave = getSharedPreferences("firstLog", 0);
 
+       // check if first time logging in
+        SharedPreferences dataSave = getSharedPreferences("firstLog", 0);
         if (dataSave.getString("firstTime", "").toString().equals("no")) {
 
         } else {
@@ -90,7 +91,7 @@ public class AfterLogin extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-
+// reset password
         reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,7 +111,7 @@ public class AfterLogin extends AppCompatActivity {
         loginManager = LoginManager.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-
+// checking if user is connected if not go to login
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
         if (user == null && accessToken == null) {
             Intent goBackIntent = new Intent(AfterLogin.this, loginActivity.class);
@@ -134,6 +135,7 @@ public class AfterLogin extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+        // what happens when you click signout
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -147,7 +149,7 @@ public class AfterLogin extends AppCompatActivity {
 
             }
         });
-
+// getting data
         fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .get().addOnCompleteListener(task -> {
             if(task.isSuccessful() && task.getResult() != null){
@@ -166,14 +168,24 @@ public class AfterLogin extends AppCompatActivity {
                     cm =  task.getResult().getString("cm");
                 }
                 else{
-                    // feet inch lb                    lb  =  task.getResult().getString("lb");
-                    //                    inch = task.getResult().getString("inch");
-                    //                    feet = task.getResult().getString("feet");
+//                     feet inch lb
+                            lb  =  task.getResult().getString("lb");
+                                        inch = task.getResult().getString("inch");
+                                        feet = task.getResult().getString("feet");
 
                 }
              // you can call users info here after setting them
                Toast.makeText(AfterLogin.this,"gender "+ gender, Toast.LENGTH_LONG).show();
                 Toast.makeText(AfterLogin.this, "birthday: "+ bDay, Toast.LENGTH_LONG).show();
+                if(preferred.equals("Kg/Cm")){
+                    Toast.makeText(AfterLogin.this,"kg "+ kg, Toast.LENGTH_LONG).show();
+                    Toast.makeText(AfterLogin.this,"cm "+ cm, Toast.LENGTH_LONG).show();
+                }
+                else if(preferred.equals("lb/inch")){
+                    Toast.makeText(AfterLogin.this,"lb "+ lb, Toast.LENGTH_LONG).show();
+                    Toast.makeText(AfterLogin.this,"inch "+ inch, Toast.LENGTH_LONG).show();
+                    Toast.makeText(AfterLogin.this,"feet "+ feet, Toast.LENGTH_LONG).show();
+                }
 
 
             }else{
@@ -192,7 +204,5 @@ public class AfterLogin extends AppCompatActivity {
                 });
     }
 
-public void checkIfFirstTime(){
 
-}
 }
