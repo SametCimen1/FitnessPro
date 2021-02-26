@@ -286,7 +286,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 Map<String, Object> user = new HashMap<>();
                                 user.put("name", name);
                                 user.put("email", email);
-                                documentReference.update(user).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                documentReference.set(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                     @Override
                                     public void onSuccess(Void aVoid) {
 
@@ -305,7 +305,8 @@ public class SignUpActivity extends AppCompatActivity {
                                 finish();
 
                             } else {
-                                Toast.makeText(SignUpActivity.this, "Error:" + task.getException(), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignUpActivity.this, "Error: " + task.getException().toString(), Toast.LENGTH_SHORT).show();
+
                             }
 
 
@@ -313,7 +314,9 @@ public class SignUpActivity extends AppCompatActivity {
                     });
                 }
                 else {
-                    Toast.makeText(SignUpActivity.this, "Error:" + task.getException(), Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(SignUpActivity.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
                 }
 
 

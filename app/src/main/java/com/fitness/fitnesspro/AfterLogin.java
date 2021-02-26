@@ -2,48 +2,45 @@ package com.fitness.fitnesspro;
 
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
+
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.login.LoginManager;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.common.base.CharMatcher;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
+
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.ListenerRegistration;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import java.util.Calendar;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
 
-import java.util.EventListener;
-import java.util.Objects;
 
-public class AfterLogin extends AppCompatActivity {
+public class AfterLogin extends AppCompatActivity   {
     private Button signOut;
     GoogleSignInClient mGoogleSignInClient;
     FirebaseFirestore fStore;
@@ -56,12 +53,15 @@ public class AfterLogin extends AppCompatActivity {
     private String emailFromSignUp;
     private TextView textEmail, textName;
     private TextView emailText;
+    private Button profile, goToSteps;
     private String email;
     private Button reset;
+    private   boolean isChecked;
     private String preferred;
     private String gender, bDay;
 
     private String kg = "";
+    private Boolean isThereData;
     private String cm = "";
     private String feet, inch, lb;
 
@@ -70,6 +70,7 @@ public class AfterLogin extends AppCompatActivity {
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_after_login);
         getWindow ( ).setFlags ( WindowManager.LayoutParams.FLAG_FULLSCREEN , (WindowManager.LayoutParams.FLAG_FULLSCREEN) );
@@ -103,11 +104,10 @@ public class AfterLogin extends AppCompatActivity {
 
         googleSign = new googleSignIn();
         signUpActivity = new SignUpActivity();
-
-
+        goToSteps = findViewById(R.id.steps);
         emailFromSignUp = signUpActivity.getEmail();
         login = new loginActivity();
-
+        profile = findViewById(R.id.profileButton);
         loginManager = LoginManager.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
@@ -135,13 +135,16 @@ public class AfterLogin extends AppCompatActivity {
 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
+
+
+
         // what happens when you click signout
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 loginManager.logOut();
                 FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(AfterLogin.this, SignUpActivity.class);
+                Intent intent = new Intent(AfterLogin.this, loginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
@@ -149,12 +152,26 @@ public class AfterLogin extends AppCompatActivity {
 
             }
         });
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AfterLogin.this, Profile.class);
+                startActivity(intent);
+            }
+        });
+        goToSteps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+           Intent intent = new Intent(AfterLogin.this, stepCounter.class);
+           startActivity(intent);
+
+            }
+        });
 // getting data
         fStore.collection("users").document(FirebaseAuth.getInstance().getCurrentUser().getEmail())
                 .get().addOnCompleteListener(task -> {
             if(task.isSuccessful() && task.getResult() != null){
-                gender = task.getResult().getString("gender");
-                 bDay = task.getResult().getString("birthday");
+
                 preferred = task.getResult().getString("preferred data Type");
                 if(preferred == null){
                     Intent goBackIntent = new Intent(AfterLogin.this, MainActivity.class);
@@ -174,24 +191,92 @@ public class AfterLogin extends AppCompatActivity {
                                         feet = task.getResult().getString("feet");
 
                 }
-             // you can call users info here after setting them
-               Toast.makeText(AfterLogin.this,"gender "+ gender, Toast.LENGTH_LONG).show();
-                Toast.makeText(AfterLogin.this, "birthday: "+ bDay, Toast.LENGTH_LONG).show();
-                if(preferred.equals("Kg/Cm")){
-                    Toast.makeText(AfterLogin.this,"kg "+ kg, Toast.LENGTH_LONG).show();
-                    Toast.makeText(AfterLogin.this,"cm "+ cm, Toast.LENGTH_LONG).show();
-                }
-                else if(preferred.equals("lb/inch")){
-                    Toast.makeText(AfterLogin.this,"lb "+ lb, Toast.LENGTH_LONG).show();
-                    Toast.makeText(AfterLogin.this,"inch "+ inch, Toast.LENGTH_LONG).show();
-                    Toast.makeText(AfterLogin.this,"feet "+ feet, Toast.LENGTH_LONG).show();
-                }
+
 
 
             }else{
                 //deal with error
             }
         });
+
+//        Button steps = findViewById(R.id.step);
+//        steps.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                setContentView(R.layout.stepcountertest);
+//            }
+//        });
+        // calender
+        Button go = findViewById(R.id.openCalendar);
+        go.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ListView listView;
+
+                listView = findViewById(R.id.listView);
+                ArrayList<String> workouts = new ArrayList<String>();
+                Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
+
+                int currentYear = calendar.get(Calendar.YEAR);
+                int currentMonth = calendar.get(Calendar.MONTH) + 1;
+                int currentDay = calendar.get(Calendar.DAY_OF_MONTH);
+                String year = String.valueOf(currentYear);
+                String month = String.valueOf(currentMonth);
+                String day = String.valueOf(currentDay);
+                String date = month+""+day+""+ year;
+
+                setContentView(R.layout.calender);
+                TextView theDate;
+                CalendarView mCalendarView;
+                theDate = findViewById(R.id.date);
+
+// when play button clicked
+
+
+                String workoutName = "WorkoutOne";
+                String workoutName2 = "WorkoutTwo";
+                String workoutName3 = "WorkoutThree";
+                String workoutName4 = "WorkoutFour";
+                workouts.add("2242021" + workoutName);
+                workouts.add("2232021" + workoutName2);
+                workouts.add("2252021" + workoutName3);
+                workouts.add("2262021" + workoutName4);
+                mCalendarView = (CalendarView) findViewById(R.id.calendarView);
+                mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+                    @Override
+                    public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                        month++;
+                        String stringYear = String.valueOf(year);
+                        String stringMonth = String.valueOf(month);
+                        String stringDay = String.valueOf(dayOfMonth);
+                        String date = stringMonth+""+stringDay+""+ stringYear;
+                        int found = 0;
+
+                        for(int i = 0; i<workouts.size(); i++){
+                            String name = workouts.get(i).replaceAll("\\d","");
+                            String dateOfWorkout = CharMatcher.inRange('0', '9').retainFrom(workouts.get(i));
+                            if(date.equals(dateOfWorkout)){
+                                found++;
+                                theDate.setText(workouts.get(i));
+                                Toast.makeText(AfterLogin.this,name , Toast.LENGTH_LONG).show();
+                                Toast.makeText(AfterLogin.this,dateOfWorkout, Toast.LENGTH_LONG).show();
+
+                            }
+                        }
+                        String [] list;
+                        list = new String[found];
+                        if(list.length==0){
+                            Toast.makeText(AfterLogin.this,"No data available ", Toast.LENGTH_LONG).show();
+                        }
+//                        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list);
+
+                    }
+                });
+            }
+        });
+
+
+
     }
     //     not using this because using  FirebaseAuth.getInstance().signOut();
     private void signOut() {
@@ -203,6 +288,11 @@ public class AfterLogin extends AppCompatActivity {
                     }
                 });
     }
+    public void checkIfThereIsData(){
 
 
-}
+
+    }
+
+    }
+
