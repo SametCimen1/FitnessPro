@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    tools:context=".AfterLogin"
-    android:orientation="vertical">
+    tools:context=".MainActivity">
 
     <CalendarView
         android:id="@+id/calendarView"
@@ -15,38 +12,69 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+
+
         app:layout_constraintTop_toTopOf="parent"
-
-
-        />
-
-
+        app:layout_constraintVertical_bias="0" />
 
     <TextView
-        android:id="@+id/date"
+        android:id="@+id/pushupView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Date: "
-        android:textAlignment="center"
+        android:textColor="@color/black"
         android:textSize="30sp"
-
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarView"
+        app:layout_constraintVertical_bias="0.113" />
 
     <TextView
-        android:id="@+id/steps"
+        android:id="@+id/squatView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Number of steps: "
-        android:textAlignment="center"
-        android:textSize="26sp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pushupView"
+        app:layout_constraintVertical_bias="0.147" />
 
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
 
-    <ListView
-        android:id="@+id/listView"
+    <TextView
+        android:id="@+id/lunge"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/extension"
+        app:layout_constraintVertical_bias="0.501" />
+
+    <TextView
+        android:id="@+id/extension"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pushupView"
+        app:layout_constraintVertical_bias="0.476" />
 
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

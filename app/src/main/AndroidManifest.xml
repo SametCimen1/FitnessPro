@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fitness.fitnesspro">
-
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.fitness.fitnesspro"
+    android:versionCode="1511"
+    android:versionName="1.5.11">
+    <uses-sdk android:targetSdkVersion="26"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+    <uses-feature
+        android:name="android.hardware.sensor.stepcounter"
+        android:required="true"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" android:maxSdkVersion="26"/>
     <application
         android:name="androidx.multidex.MultiDexApplication"
         android:allowBackup="true"
@@ -16,6 +25,25 @@
         android:theme="@style/Theme.FitnessPro">
         <activity android:name=".googleContinue"></activity>
         <activity android:name=".stepCounter"></activity>
+        <activity android:name=".pickWorkout"></activity>
+        <activity android:name=".calenderclass"></activity>
+        <activity android:name=".ArmWork"></activity>
+        <activity android:name=".timer"></activity>
+        <activity android:name=".armcircles"></activity>
+        <activity android:name=".Armfront"></activity>
+        <activity android:name=".CounterSave"></activity>
+        <activity android:name=".plank"></activity>
+        <activity android:name=".armdays"></activity>
+        <activity android:name=".legDays"></activity>
+        <activity android:name=".legworkouts"></activity>
+        <activity android:name=".countersaver"></activity>
+        <activity android:name=".gobletsquat"></activity>
+        <activity android:name=".laterallunge"></activity>
+        <activity android:name=".SideJump"></activity>
+        <activity android:name=".Squatlunge"></activity>
+
+
+
         <activity android:name=".main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -65,6 +93,9 @@
         <activity android:name=".Activity2" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Profile" />
+        <activity android:name=".mainscreen" />
+
+
     </application>
 
 </manifest>
